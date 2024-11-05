@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "123456",
-    "database": "eticaretdb",
-    "host": "127.0.0.1",
+    "username": "${DATABASE_USER}",
+    "password": "${DATABASE_PASSWORD}",
+    "database": "${DATABASE_NAME}",
+    "host": "${DATABASE_HOST}",
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": "123456",
-    "database": "eticaretdb",
-    "host": "127.0.0.1",
+    "username": "${DATABASE_USER}",
+    "password": "${DATABASE_PASSWORD}",
+    "database": "${DATABASE_NAME}",
+    "host": "${DATABASE_HOST}",
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "123456",
-    "database": "eticaretdb",
-    "host": "127.0.0.1",
+    "username": "${DATABASE_USER}",
+    "password": "${DATABASE_PASSWORD}",
+    "database": "${DATABASE_NAME}",
+    "host": "${DATABASE_HOST}",
     "dialect": "postgres"
   }
 }
