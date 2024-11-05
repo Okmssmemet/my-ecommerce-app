@@ -1,20 +1,26 @@
 const router = require("express").Router();
-const {login,register,me,updateCustomerProfile,updateSellerProfile } = require("../controllers/auth.controller")
-const authValidation = require("../middlewares/validations/auth.validation")
-const { tokenCheck,roleCheck } = require("../middlewares/auth")
+const {
+  login,
+  register,
+  me,
+  updateCustomerProfile,
+  updateSellerProfile,
+} = require("../controllers/auth.controller");
+const authValidation = require("../middlewares/validations/auth.validation");
+const { tokenCheck, roleCheck } = require("../middlewares/auth");
 
+// Tüm kullanıcılar için
+router.post("/login", authValidation.login, login);
 
-router.post("/login",authValidation.login,login)
+// Sadece müşteri veya satıcı kaydı için
+router.post("/register/customer", authValidation.register, register);
+router.post("/register/seller", authValidation.register, register);
 
-router.post("/register/customer",authValidation.register,register)
-router.post("/register/seller",authValidation.register,register)
-
-// Customer profili güncelleme
+// Profil güncellemeleri sadece ilgili rol için
 router.put("/profile/customer", tokenCheck, roleCheck("customer"), updateCustomerProfile);
-
-// Seller profili güncelleme
 router.put("/profile/seller", tokenCheck, roleCheck("seller"), updateSellerProfile);
 
-router.get("/me",tokenCheck,me)
+// Kendi profilini görmek isteyen herkes
+router.get("/me", tokenCheck, me);
 
-module.exports = router
+module.exports = router;
