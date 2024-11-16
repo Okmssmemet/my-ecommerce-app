@@ -22,6 +22,10 @@ app.get("/",(req,res) =>{
     })
 })
 
+app.get("healtcheck",(req,res)=>{
+    res.status(200).send('ok')
+})
+
 //Hata Yakalama
 app.use(errorHandlerMiddleware)
 
